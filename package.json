@@ -1,8 +1,13 @@
 {
   "name": "steem-mini",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Bare-bones Steem JSON-RPC client",
   "main": "lib/steem-mini.js",
+  "files": [
+    "dist",
+    "lib",
+    "src"
+  ],
   "scripts": {
     "test": "eslint src tests && jest",
     "build:cjs": "cross-env BUILD_TYPE=cjs rollup -c -o lib/steem-mini.js",

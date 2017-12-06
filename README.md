@@ -28,6 +28,16 @@ npm install
 ```
 
 ## Usage
+
+#### Usage in browser
+```html
+<script src="https://unpkg.com/steem-mini@0.0.2/dist/steem-mini.js"></script>
+```
+Or if you want to use not minified version
+```html
+<script src="https://unpkg.com/steem-mini@0.0.2/dist/steem-mini.min.js"></script>
+```
+
 ```js
 // using UMD (browser)
 const client = window.SteemMini.createClient('https://api.steemit.com');
