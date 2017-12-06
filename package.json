@@ -4,7 +4,7 @@
   "description": "Bare-bones Steem JSON-RPC client",
   "main": "index.js",
   "scripts": {
-    "test": "eslint src __tests__ && jest"
+    "test": "eslint src tests && jest"
   },
   "author": "Wiktor Tkaczyński <wiktor.tkaczynski@gmail.com>",
   "license": "MIT",
@@ -17,5 +17,8 @@
   },
   "dependencies": {
     "isomorphic-fetch": "^2.2.1"
+  },
+  "jest": {
+    "testRegex": "(/tests/.*\\.js)$"
   }
 }
