@@ -1,4 +1,9 @@
-import 'isomorphic-fetch';
+let fetch;
+if (typeof window !== 'undefined' && window.fetch) {
+  ({ fetch } = window);
+} else {
+  fetch = require('cross-fetch'); // eslint-disable-line global-require
+}
 
 /**
  * Creates new Steem client.
@@ -30,7 +35,7 @@ export default function createClient(address) {
       .then(res => res.json())
       .then((res) => {
         if (res.error) throw new Error('Response contains error', res.error);
-        if (!res.result) throw new Error('Response doesn\'t contain result');
+        if (!res.result) throw new Error("Response doesn't contain result");
         return res;
       })
       .then((res) => {
