@@ -1,0 +1,21 @@
+{
+  "name": "steem-mini",
+  "version": "0.0.1",
+  "description": "Bare-bones Steem JSON-RPC client",
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint src __tests__ && jest"
+  },
+  "author": "Wiktor Tkaczyński <wiktor.tkaczynski@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.12.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "jest": "^21.2.1"
+  },
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1"
+  }
+}
