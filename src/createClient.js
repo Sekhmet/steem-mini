@@ -1,3 +1,5 @@
+import createTimeout from './utils/createTimeout';
+
 let fetch;
 if (typeof window !== 'undefined' && window.fetch) {
   ({ fetch } = window);
@@ -11,8 +13,22 @@ if (typeof window !== 'undefined' && window.fetch) {
  * @param {String} address Address of the JSON RPC (HTTP) server.
  * @returns {Client} Steem client that you can use for sending and receiving data.
  */
-export default function createClient(address) {
+export default function createClient(address, options = {}) {
+  if (typeof options !== 'object') throw new Error('Options has to be an object');
+
+  const clientOptions = {
+    timeout: 5000,
+    ...options,
+  };
+
   let nextRequestId = 0;
+
+  const fetchURL = request =>
+    fetch(address, {
+      body: JSON.stringify(request),
+      method: 'post',
+      mode: 'cors',
+    });
 
   /**
    * Sends command to node
@@ -27,11 +43,7 @@ export default function createClient(address) {
     };
     nextRequestId += 1;
 
-    fetch(address, {
-      body: JSON.stringify(request),
-      method: 'post',
-      mode: 'cors',
-    })
+    createTimeout(clientOptions.timeout, fetchURL(request))
       .then(res => res.json())
       .then((res) => {
         if (res.error) throw new Error('Response contains error', res.error);
