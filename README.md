@@ -1,3 +1,5 @@
+# Deprecated! Consider using [lightrpc](https://github.com/Sekhmet/lightrpc) instead.
+
 # Steem Mini
 
 Tiny Steem library - batteries not included
